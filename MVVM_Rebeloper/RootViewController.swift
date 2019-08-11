@@ -65,8 +65,35 @@ class RootViewController: UIViewController {
     
     @objc
     fileprivate func fetchBarButtonItemTapped(){
-        label.text = "Fetching"
+       // label.text = "Fetching"
+        
+        //Normal DispatchQueue
+        /*
+        DispatchQueue.global(qos: .background).async {
+            let result = "3"
+            
+            let delay : Double = 3
+            let time : DispatchTime = DispatchTime.now() + delay
+            
+            //executes after 3 seconds
+            DispatchQueue.main.asyncAfter(deadline: time, execute: { [unowned self] in
+                self.label.text = "Fetching \(result)"
+            })
+        }
+ 
+         */
+        
+        //Using DispatchQueuehelpere custom class
+        DispatchQueueHelper.delay(bySeconds: 3.0, dispatchLevel: .background) {
+            let result = "3"
+            DispatchQueueHelper.delay(bySeconds: 0, completion: { [unowned self] in
+                self.label.text = "Fetching \(result)"
+            })
+        }
+        
+        
     }
+    
     
     fileprivate func setupViews(){
         
@@ -85,7 +112,7 @@ class RootViewController: UIViewController {
        
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint(item: activityIndicator, attribute: .bottom, relatedBy: .equal, toItem: activityIndicator.superview, attribute: .bottom, multiplier: 1, constant: -150).isActive = true
+        NSLayoutConstraint(item: activityIndicator, attribute: .bottom, relatedBy: .equal, toItem: label, attribute: .bottom, multiplier: 1, constant: 20).isActive = true
         
         NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: activityIndicator.superview, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
 

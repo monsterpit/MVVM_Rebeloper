@@ -13,6 +13,7 @@
 		2C09A81A2300013400B9B389 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A8192300013400B9B389 /* User.swift */; };
 		2C09A81C2300043300B9B389 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A81B2300043200B9B389 /* RootViewController.swift */; };
 		2C09A822230006C400B9B389 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C09A821230006C400B9B389 /* RootViewModel.swift */; };
+		2CD5AD3B23001E21003E124F /* DispatchQueueHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD5AD3A23001E21003E124F /* DispatchQueueHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2C09A8192300013400B9B389 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2C09A81B2300043200B9B389 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		2C09A821230006C400B9B389 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		2CD5AD3A23001E21003E124F /* DispatchQueueHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				2C09A80722FFF4D800B9B389 /* AppDelegate.swift */,
 				2C09A81B2300043200B9B389 /* RootViewController.swift */,
+				2CD5AD3A23001E21003E124F /* DispatchQueueHelper.swift */,
 				2C09A821230006C400B9B389 /* RootViewModel.swift */,
 				2C09A8192300013400B9B389 /* User.swift */,
 				2C09A80E22FFF4DE00B9B389 /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C09A80822FFF4D800B9B389 /* AppDelegate.swift in Sources */,
+				2CD5AD3B23001E21003E124F /* DispatchQueueHelper.swift in Sources */,
 				2C09A81C2300043300B9B389 /* RootViewController.swift in Sources */,
 				2C09A822230006C400B9B389 /* RootViewModel.swift in Sources */,
 				2C09A81A2300013400B9B389 /* User.swift in Sources */,
