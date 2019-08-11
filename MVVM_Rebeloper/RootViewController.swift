@@ -6,6 +6,7 @@
 //  Copyright © 2019 MB. All rights reserved.
 //
 
+//ViewController should only be about displaying things on view
 import UIKit
 
 class RootViewController: UIViewController {
@@ -38,18 +39,17 @@ class RootViewController: UIViewController {
         setupNavigationView()
         setupViews()
         
-        //setting Up view Model
-        let user = User(name: "Vikas", age: 24, backgroundColor: .orange)
+        //setting Up view Model  Movede to app delegate as we dont  want logic to be  in viewcontrollerer and viewcontroller is all about displaying stuff in this casee in appDelegate
+  //      let user = User(name: "Vikas", age: 24, backgroundColor: .orange)
       //  let user = User(name: "Vikas", age: 24, backgroundColor: .purple)
-        viewModel = RootViewModel(user: user)
+    //    viewModel = RootViewModel(user: user)
+        
+        viewModel.rootViewModelDelegate = self
     }
 
     
     fileprivate func setupNavigationView(){
-        
-        navigationItem.title = "Vikas , 24 "
-        
-        
+  
         
         let resetBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetBarButtonItemTapped))
         let fetchBarButtonItem = UIBarButtonItem(title: "Fetch", style: .done, target: self, action: #selector(fetchBarButtonItemTapped))
@@ -65,36 +65,8 @@ class RootViewController: UIViewController {
     
     @objc
     fileprivate func fetchBarButtonItemTapped(){
-       // label.text = "Fetching"
-        
-        activityIndicator.startAnimating()
-        
-        //Normal DispatchQueue
-        /*
-        DispatchQueue.global(qos: .background).async {
-            let result = "3"
-            
-            let delay : Double = 3
-            let time : DispatchTime = DispatchTime.now() + delay
-            
-            //executes after 3 seconds
-            DispatchQueue.main.asyncAfter(deadline: time, execute: { [unowned self] in
-                self.label.text = "Fetching \(result)"
-            })
-        }
- 
-         */
-        
-        //Using DispatchQueuehelpere custom class
-        DispatchQueueHelper.delay(bySeconds: 3.0, dispatchLevel: .background) {
-            let result = "Hello there"
-            DispatchQueueHelper.delay(bySeconds: 0, completion: { [unowned self] in
-                self.label.text = result
-                self.activityIndicator.stopAnimating()
-            })
-        }
-        
-        
+
+        viewModel.startFetchMessage()
     }
     
     
@@ -124,3 +96,22 @@ class RootViewController: UIViewController {
 
 }
 
+
+
+extension RootViewController : RootViewModelDelegate{
+    func didStartFetchingMessage(_ message: String?) {
+        
+        label.text = message
+        
+        activityIndicator.startAnimating()
+    }
+    
+    func didFinishFetchingMessage(_ message: String?) {
+
+        label.text = message
+
+        activityIndicator.stopAnimating()
+    }
+    
+    
+}

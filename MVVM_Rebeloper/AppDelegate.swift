@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = RootViewController()
+        
+        let user = User(name: "Vikas", age: 24, backgroundColor: .orange)
+        let viewmodel = RootViewModel(user: user)
+        viewController.viewModel = viewmodel
+        
         let navigationController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
