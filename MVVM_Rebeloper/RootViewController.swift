@@ -67,6 +67,8 @@ class RootViewController: UIViewController {
     fileprivate func fetchBarButtonItemTapped(){
        // label.text = "Fetching"
         
+        activityIndicator.startAnimating()
+        
         //Normal DispatchQueue
         /*
         DispatchQueue.global(qos: .background).async {
@@ -85,9 +87,10 @@ class RootViewController: UIViewController {
         
         //Using DispatchQueuehelpere custom class
         DispatchQueueHelper.delay(bySeconds: 3.0, dispatchLevel: .background) {
-            let result = "3"
+            let result = "Hello there"
             DispatchQueueHelper.delay(bySeconds: 0, completion: { [unowned self] in
-                self.label.text = "Fetching \(result)"
+                self.label.text = result
+                self.activityIndicator.stopAnimating()
             })
         }
         
