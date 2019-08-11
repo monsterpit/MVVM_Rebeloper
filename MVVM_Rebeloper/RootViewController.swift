@@ -10,6 +10,15 @@ import UIKit
 
 class RootViewController: UIViewController {
 
+    //setting up view properrties with view
+    var viewModel : RootViewModel!{
+        didSet{
+            view.backgroundColor = viewModel.user.backgroundColor
+            navigationItem.title = "\(viewModel.user.name) , \(viewModel.user.age)"
+        }
+    }
+    
+    
     lazy var label : UILabel = {
         let label = UILabel()
         label.text = "Tap 'Fetch' to retrieve the message"
@@ -28,6 +37,11 @@ class RootViewController: UIViewController {
         
         setupNavigationView()
         setupViews()
+        
+        //setting Up view Model
+        let user = User(name: "Vikas", age: 24, backgroundColor: .orange)
+      //  let user = User(name: "Vikas", age: 24, backgroundColor: .purple)
+        viewModel = RootViewModel(user: user)
     }
 
     
