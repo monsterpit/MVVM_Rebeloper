@@ -11,7 +11,7 @@ import UIKit
 
 class RootViewController: UIViewController {
 
-    //setting up view properrties with view
+    //setting up view properties with view
     var viewModel : RootViewModel!{
         didSet{
             view.backgroundColor = viewModel.user.backgroundColor
@@ -34,16 +34,11 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         
         setupNavigationView()
         setupViews()
-        
-        //setting Up view Model  Movede to app delegate as we dont  want logic to be  in viewcontrollerer and viewcontroller is all about displaying stuff in this casee in appDelegate
-  //      let user = User(name: "Vikas", age: 24, backgroundColor: .orange)
-      //  let user = User(name: "Vikas", age: 24, backgroundColor: .purple)
-    //    viewModel = RootViewModel(user: user)
-        
+
         viewModel.rootViewModelDelegate = self
     }
 
